@@ -74,38 +74,29 @@
             </form>
         </div>
     </div>
-    <script>
+    <script type="module">
+        import api from '../js/api.js';
+        
         document.addEventListener('DOMContentLoaded', () => {
             const feedbackForm = document.getElementById('feedback-form');
+            const submitButton = document.querySelector('.submit-button');
             const feedbackStatus = document.getElementById('feedback-status');
-            const submitButton = feedbackForm.querySelector('button[type="submit"]');
 
             feedbackForm.addEventListener('submit', async (e) => {
-                e.preventDefault(); // Prevent default form submission
-
-                feedbackStatus.textContent = '提交中...';
-                feedbackStatus.className = 'text-center mb-4 text-sm font-semibold text-blue-600';
-                submitButton.disabled = true; // Disable button during submission
+                e.preventDefault();
+                submitButton.disabled = true;
 
                 const name = document.getElementById('name').value;
                 const email = document.getElementById('email').value;
                 const message = document.getElementById('message').value;
 
                 try {
-                    const response = await fetch('/api/feedback', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                        body: JSON.stringify({ name, email, message }),
-                    });
+                    const result = await api.submitFeedback({ name, email, message });
 
-                    const result = await response.json();
-
-                    if (response.ok) {
+                    if (result.success) {
                         feedbackStatus.textContent = result.message || '反馈提交成功！';
                         feedbackStatus.className = 'text-center mb-4 text-sm font-semibold text-green-600';
-                        feedbackForm.reset(); // Clear the form
+                        feedbackForm.reset();
                     } else {
                         feedbackStatus.textContent = result.error || '反馈提交失败，请重试。';
                         feedbackStatus.className = 'text-center mb-4 text-sm font-semibold text-red-600';
@@ -115,7 +106,7 @@
                     feedbackStatus.textContent = '网络错误，请检查您的网络连接。';
                     feedbackStatus.className = 'text-center mb-4 text-sm font-semibold text-red-600';
                 } finally {
-                    submitButton.disabled = false; // Re-enable button
+                    submitButton.disabled = false;
                 }
             });
         });

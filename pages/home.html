@@ -168,7 +168,9 @@
         </div>
     </section>
 
-    <script>
+    <script type="module">
+        import api from '../js/api.js';
+        
         document.getElementById('downloadButton').addEventListener('click', async () => {
             const videoLinkInput = document.getElementById('videoLink');
             const videoLink = videoLinkInput.value;
@@ -185,7 +187,6 @@
             errorState.classList.add('hidden');
 
             if (!videoLink) {
-                // Use data-i18n for messages that might change based on language
                 errorMessage.textContent = translations[localStorage.getItem('selectedLanguage') || 'zh-CN'].home_invalid_url_message;
                 errorState.classList.remove('hidden');
                 return;
@@ -197,19 +198,10 @@
             downloadButton.innerHTML = `<i class="fas fa-spinner fa-spin mr-2"></i> ${translations[localStorage.getItem('selectedLanguage') || 'zh-CN'].home_loading_message}`;
 
             try {
-                const response = await fetch('/api/download', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({ url: videoLink }),
-                });
+                const data = await api.downloadVideo(videoLink);
+                loadingState.classList.add('hidden');
 
-                const data = await response.json();
-
-                loadingState.classList.add('hidden'); // Hide loading once response is received
-
-                if (response.ok) {
+                if (data.downloadUrl) {
                     document.getElementById('downloadLink').href = data.downloadUrl;
                     successState.classList.remove('hidden');
                 } else {
