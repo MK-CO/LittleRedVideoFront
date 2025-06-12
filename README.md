@@ -1,4 +1,61 @@
-# 小红视频下载器 - 前端
+# Little Red Video Front
+
+## 项目说明
+这是一个基于 Nginx 托管的前端项目。
+
+## 技术栈
+- Nginx
+- Docker
+- GitHub Actions
+
+## 本地开发
+1. 克隆项目
+```bash
+git clone [项目地址]
+cd LittleRedVideoFront
+```
+
+2. 本地运行
+```bash
+# 构建 Docker 镜像
+docker build -t little-red-video-front .
+
+# 运行容器
+docker run -p 8009:8009 little-red-video-front
+```
+
+3. 访问测试
+- 主页：http://localhost:8009
+- 静态资源：http://localhost:8009/js/ 和 http://localhost:8009/assets/
+
+## 自动部署
+项目使用 GitHub Actions 实现自动部署，当代码推送到 main 分支时会自动触发部署流程。
+
+### 部署流程
+1. 自动构建 Docker 镜像
+2. 推送镜像到 DockerHub
+3. 自动部署到服务器
+
+### 所需配置
+在 GitHub 仓库的 Settings -> Secrets and variables -> Actions 中配置以下密钥：
+
+1. DockerHub 相关：
+   - `DOCKERHUB_USERNAME`: DockerHub 用户名
+   - `DOCKERHUB_TOKEN`: DockerHub 访问令牌
+
+2. 服务器相关：
+   - `SERVER_HOST`: 服务器 IP 地址
+   - `SERVER_USERNAME`: 服务器用户名
+   - `SERVER_PASSWORD`: 服务器密码
+   - `SERVER_PORT`: SSH 端口（默认 22）
+
+### 触发部署
+只需将代码推送到 main 分支即可触发自动部署：
+```bash
+git add .
+git commit -m "your commit message"
+git push origin main
+```
 
 ## 项目结构
 
@@ -29,3 +86,8 @@ frontend/
 ## 使用说明
 
 直接在浏览器中打开 `src/pages/home.html` 即可使用，或使用本地服务器托管前端文件。
+
+## 注意事项
+1. 确保服务器已安装 Docker
+2. 确保服务器防火墙允许 8009 端口访问
+3. 如需修改端口，请同时更新 Dockerfile 和 nginx.conf
