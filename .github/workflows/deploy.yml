@@ -35,4 +35,4 @@ jobs:
           docker pull ${{ secrets.DOCKERHUB_USERNAME }}/little-red-video-front:latest
           docker stop little-red-video-front || true
           docker rm little-red-video-front || true
-          docker run -d --name little-red-video-front -p 8009:8009 ${{ secrets.DOCKERHUB_USERNAME }}/little-red-video-front:latest 
+          docker run -d --name little-red-video-front --network my-network -p 8009:8009 ${{ secrets.DOCKERHUB_USERNAME }}/little-red-video-front:latest 
