@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n-title="page_title_blog_detail">小红视频下载 - 博客详情</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <style>
+        .blog-content h2, .blog-content h3, .blog-content h4 {
+            margin-top: 1.5em;
+            margin-bottom: 0.8em;
+            font-weight: bold;
+        }
+        .blog-content h2 {
+            font-size: 2.25rem; /* text-4xl */
+            color: #1a202c; /* gray-900 */
+        }
+        .blog-content h3 {
+            font-size: 1.875rem; /* text-3xl */
+            color: #2d3748; /* gray-800 */
+        }
+        .blog-content h4 {
+            font-size: 1.5rem; /* text-2xl */
+            color: #4a5568; /* gray-700 */
+        }
+        .blog-content p {
+            margin-bottom: 1em;
+            line-height: 1.7;
+            color: #4a5568; /* gray-700 */
+        }
+        .blog-content ul, .blog-content ol {
+            margin-left: 1.5em;
+            margin-bottom: 1em;
+        }
+        .blog-content ul li {
+            list-style-type: disc;
+        }
+        .blog-content ol li {
+            list-style-type: decimal;
+        }
+        .blog-content a {
+            color: #dc2626; /* red-600 */
+            text-decoration: underline;
+        }
+        .toc a {
+            display: block;
+            padding: 0.5em 0;
+            color: #4a5568;
+            transition: color 0.2s ease;
+        }
+        .toc a:hover {
+            color: #dc2626;
+        }
+        .toc .active {
+            color: #dc2626;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body class="font-sans bg-gray-50 p-6">
+    <div class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8 flex flex-col lg:flex-row gap-8">
+        <!-- Main Blog Content Area -->
+        <div class="lg:w-3/4 bg-white rounded-xl shadow-lg p-8">
+            <h1 id="blog-detail-title" class="text-5xl font-extrabold text-gray-800 mb-6" data-i18n="blog_post_title_placeholder"></h1>
+            <img id="blog-detail-image" src="" alt="Blog Image" class="w-full h-96 object-cover rounded-lg mb-8">
+            <div id="blog-detail-content" class="blog-content text-lg">
+                <!-- Blog content will be loaded here dynamically -->
+            </div>
+        </div>
+
+        <!-- Sidebar / Table of Contents -->
+        <div class="lg:w-1/4 bg-white rounded-xl shadow-lg p-8 lg:sticky lg:top-8 self-start">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6" data-i18n="blog_toc_title">目录</h2>
+            <nav id="blog-toc" class="toc">
+                <!-- Table of contents will be generated here -->
+            </nav>
+        </div>
+    </div>
+
+    <script src="../js/translations.js"></script>
+    <script src="../js/main.js"></script>
+</body>
+</html> 
