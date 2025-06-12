@@ -16,6 +16,14 @@ cd LittleRedVideoFront
 ```
 
 2. 本地运行
+方式一：使用 Python 启动服务器
+```bash
+# 启动 Python HTTP 服务器
+python3 -m http.server 8000
+```
+访问地址：http://localhost:8000/pages/index.html
+
+方式二：使用 Docker
 ```bash
 # 构建 Docker 镜像
 docker build -t little-red-video-front .
@@ -25,8 +33,10 @@ docker run -p 8009:8009 little-red-video-front
 ```
 
 3. 访问测试
-- 主页：http://localhost:8009
-- 静态资源：http://localhost:8009/js/ 和 http://localhost:8009/assets/
+- Python 服务器：http://localhost:8000/pages/index.html
+- Docker 方式：
+  - 主页：http://localhost:8009
+  - 静态资源：http://localhost:8009/js/ 和 http://localhost:8009/assets/
 
 ## 自动部署
 项目使用 GitHub Actions 实现自动部署，当代码推送到 main 分支时会自动触发部署流程。
