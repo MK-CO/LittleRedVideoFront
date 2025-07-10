@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>小红视频下载 - 常见问题</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <style>
+        .faq-item {
+            border-bottom: 1px solid #eee;
+            padding: 20px 0;
+        }
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+        .faq-question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 1.25rem;
+            color: #333;
+            transition: color 0.3s ease;
+        }
+        .faq-question:hover {
+            color: #f53b57;
+        }
+        .faq-answer {
+            margin-top: 15px;
+            color: #555;
+            line-height: 1.8;
+            display: none; /* Hidden by default */
+        }
+        .faq-answer.active {
+            display: block;
+        }
+    </style>
+</head>
+<body class="font-sans bg-gray-50 p-6" data-i18n-title="page_title_faq">
+    <div class="max-w-4xl mx-auto py-8">
+        <h1 class="text-5xl font-extrabold text-gray-800 mb-12 text-center" data-i18n="faq_title">常见问题 (FAQ)</h1>
+        
+        <div class="bg-white rounded-xl shadow-lg p-8">
+            <!-- FAQ Item 1 -->
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleAnswer(this)">
+                    <span data-i18n="faq_q1">小红视频下载支持哪些平台？</span>
+                    <i class="fas fa-chevron-down text-gray-400"></i>
+                </div>
+                <div class="faq-answer">
+                    <p data-i18n="faq_a1">我们目前支持下载来自 X (Twitter)、YouTube、TikTok、Instagram 和 Facebook 的短视频。我们正在不断扩展支持的平台列表。</p>
+                </div>
+            </div>
+
+            <!-- FAQ Item 2 -->
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleAnswer(this)">
+                    <span data-i18n="faq_q2">下载视频是否免费？</span>
+                    <i class="fas fa-chevron-down text-gray-400"></i>
+                </div>
+                <div class="faq-answer">
+                    <p data-i18n="faq_a2">是的，小红视频下载是完全免费的服务，您无需支付任何费用即可下载视频。</p>
+                </div>
+            </div>
+
+            <!-- FAQ Item 3 -->
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleAnswer(this)">
+                    <span data-i18n="faq_q3">如何下载视频？</span>
+                    <i class="fas fa-chevron-down text-gray-400"></i>
+                </div>
+                <div class="faq-answer">
+                    <p data-i18n="faq_a3">只需复制您想下载的视频链接，粘贴到我们首页的输入框中，然后点击"下载"按钮。系统将自动解析视频并提供下载选项。</p>
+                </div>
+            </div>
+
+            <!-- FAQ Item 4 -->
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleAnswer(this)">
+                    <span data-i18n="faq_q4">我可以在手机上使用吗？</span>
+                    <i class="fas fa-chevron-down text-gray-400"></i>
+                </div>
+                <div class="faq-answer">
+                    <p data-i18n="faq_a4">是的，我们的网站支持响应式设计，您可以在任何设备上，包括手机和平板电脑，使用小红视频下载服务。</p>
+                </div>
+            </div>
+
+            <!-- FAQ Item 5 -->
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleAnswer(this)">
+                    <span data-i18n="faq_q5">下载视频时遇到问题怎么办？</span>
+                    <i class="fas fa-chevron-down text-gray-400"></i>
+                </div>
+                <div class="faq-answer">
+                    <p data-i18n="faq_a5">如果您在下载视频时遇到任何问题，请尝试刷新页面或检查您的网络连接。如果问题仍然存在，请通过"用户反馈"页面联系我们，我们会尽快提供帮助。</p>
+                </div>
+            </div>
+
+            <!-- FAQ Item 6 -->
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleAnswer(this)">
+                    <span data-i18n="faq_q6">下载的视频会存储在哪里？</span>
+                    <i class="fas fa-chevron-down text-gray-400"></i>
+                </div>
+                <div class="faq-answer">
+                    <p data-i18n="faq_a6">下载的视频将直接保存到您设备的默认下载文件夹中。您可以在浏览器设置中更改下载位置。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleAnswer(element) {
+            const answer = element.nextElementSibling;
+            const icon = element.querySelector('i');
+            if (answer.classList.contains('active')) {
+                answer.classList.remove('active');
+                icon.classList.remove('fa-chevron-up');
+                icon.classList.add('fa-chevron-down');
+            } else {
+                answer.classList.add('active');
+                icon.classList.remove('fa-chevron-down');
+                icon.classList.add('fa-chevron-up');
+            }
+        }
+    </script>
+    <script src="../js/translations.js"></script>
+    <script src="../js/main.js"></script>
+</body>
+</html> 

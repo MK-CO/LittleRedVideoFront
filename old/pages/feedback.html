@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>小红视频下载 - 用户反馈</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <style>
+        .feedback-form-container {
+            background-color: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            padding: 40px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .form-input,
+        .form-textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        .form-input:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: #f53b57;
+            box-shadow: 0 0 0 3px rgba(245, 59, 87, 0.2);
+        }
+        .submit-button {
+            background-color: #f53b57;
+            color: white;
+            font-weight: bold;
+            padding: 14px 28px;
+            border-radius: 8px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+        .submit-button:hover {
+            background-color: #e0324c;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body class="font-sans bg-gray-50 p-6" data-i18n-title="page_title_feedback">
+    <div class="max-w-6xl mx-auto py-8">
+        <h1 class="text-5xl font-extrabold text-gray-800 mb-12 text-center" data-i18n="feedback_title">用户反馈</h1>
+        
+        <div class="feedback-form-container">
+            <p class="text-gray-700 text-lg leading-relaxed mb-8 text-center" data-i18n="feedback_subtitle">
+                我们非常重视您的意见！请告诉我们您的建议、遇到的问题或任何其他反馈。
+            </p>
+            <form id="feedback-form">
+                <div class="mb-6">
+                    <label for="name" class="block text-gray-700 text-sm font-bold mb-2" data-i18n="feedback_name_label">您的姓名 (可选)</label>
+                    <input type="text" id="name" name="name" class="form-input" data-i18n-placeholder="feedback_name_placeholder" placeholder="请输入您的姓名">
+                </div>
+                <div class="mb-6">
+                    <label for="email" class="block text-gray-700 text-sm font-bold mb-2" data-i18n="feedback_email_label">您的邮箱 (可选)</label>
+                    <input type="email" id="email" name="email" class="form-input" data-i18n-placeholder="feedback_email_placeholder" placeholder="请输入您的邮箱">
+                </div>
+                <div class="mb-6">
+                    <label for="message" class="block text-gray-700 text-sm font-bold mb-2" data-i18n="feedback_message_label">您的反馈</label>
+                    <textarea id="message" name="message" rows="6" class="form-textarea" data-i18n-placeholder="feedback_message_placeholder" placeholder="请在此输入您的宝贵意见..."></textarea>
+                </div>
+                <div id="feedback-status" class="text-center mb-4 text-sm font-semibold"></div>
+                <div class="text-center">
+                    <button type="submit" class="submit-button">
+                        <i class="fas fa-paper-plane mr-2"></i> <span data-i18n="feedback_submit_button">提交反馈</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script type="module">
+        import api from '../js/api.js';
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            const feedbackForm = document.getElementById('feedback-form');
+            const submitButton = document.querySelector('.submit-button');
+            const feedbackStatus = document.getElementById('feedback-status');
+
+            feedbackForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                submitButton.disabled = true;
+
+                const name = document.getElementById('name').value;
+                const email = document.getElementById('email').value;
+                const message = document.getElementById('message').value;
+
+                try {
+                    const result = await api.submitFeedback({ name, email, message });
+
+                    if (result.success) {
+                        feedbackStatus.textContent = result.message || '反馈提交成功！';
+                        feedbackStatus.className = 'text-center mb-4 text-sm font-semibold text-green-600';
+                        feedbackForm.reset();
+                    } else {
+                        feedbackStatus.textContent = result.error || '反馈提交失败，请重试。';
+                        feedbackStatus.className = 'text-center mb-4 text-sm font-semibold text-red-600';
+                    }
+                } catch (error) {
+                    console.error('网络请求错误:', error);
+                    feedbackStatus.textContent = '网络错误，请检查您的网络连接。';
+                    feedbackStatus.className = 'text-center mb-4 text-sm font-semibold text-red-600';
+                } finally {
+                    submitButton.disabled = false;
+                }
+            });
+        });
+    </script>
+    <script src="../js/translations.js"></script>
+    <script src="../js/main.js"></script>
+</body>
+</html> 

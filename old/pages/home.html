@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>小红视频下载 - 首页</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <style>
+        .hero-section {
+            background: linear-gradient(135deg, #f53b57, #ff6b81);
+            color: white;
+            padding: 80px 40px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            margin-bottom: 50px;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            left: -50px;
+            width: 200px;
+            height: 200px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transform: rotate(45deg);
+        }
+        .hero-section::after {
+            content: '';
+            position: absolute;
+            bottom: -50px;
+            right: -50px;
+            width: 200px;
+            height: 200px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transform: rotate(-45deg);
+        }
+        .platform-icon {
+            filter: grayscale(100%);
+            opacity: 0.6;
+            transition: all 0.3s ease-in-out;
+            /* object-fit: contain; */
+            /* object-position: center; */
+        }
+        .platform-icon:hover {
+            filter: grayscale(0%);
+            opacity: 1;
+            transform: translateY(-5px) scale(1.1);
+        }
+        /* Custom Animations for result display */
+        @keyframes scaleIn {
+            0% { transform: scale(0); opacity: 0; }
+            70% { transform: scale(1.05); opacity: 1; }
+            100% { transform: scale(1); }
+        }
+        .animate-scale-in {
+            animation: scaleIn 0.5s ease-out forwards;
+        }
+
+        @keyframes bounceIn {
+            0% { transform: translateY(-20px); opacity: 0; }
+            50% { transform: translateY(0) scale(1.1); opacity: 1; }
+            100% { transform: translateY(0) scale(1); }
+        }
+        .animate-bounce-in {
+            animation: bounceIn 0.6s ease-out forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .animate-fade-in {
+            animation: fadeIn 0.5s ease-in forwards;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+            20%, 40%, 60%, 80% { transform: translateX(5px); }
+        }
+        .animate-shake {
+            animation: shake 0.5s ease-in-out;
+        }
+    </style>
+</head>
+<body class="font-sans bg-gray-50 p-6" data-i18n-title="page_title_home">
+    <div class="hero-section">
+        <h2 class="text-5xl font-extrabold mb-6 animate-pulse" data-i18n="home_title">轻松下载您喜爱的视频！</h2>
+        <p class="text-xl mb-10 opacity-90" data-i18n="home_subtitle">只需粘贴视频链接，即可快速、免费地下载高清视频。</p>
+        <div class="max-w-3xl mx-auto flex bg-white rounded-full shadow-lg p-2">
+            <input type="text" id="videoLink" data-i18n-placeholder="home_input_placeholder" placeholder="在此粘贴视频链接 (X, YouTube, TikTok, Instagram, Facebook...)" class="flex-grow py-4 px-6 text-lg rounded-l-full focus:outline-none text-gray-800">
+            <button id="downloadButton" class="bg-red-600 hover:bg-red-700 text-white font-bold py-4 px-10 rounded-full transition duration-300 ease-in-out transform hover:scale-105 shadow-xl">
+                <i class="fas fa-download mr-2"></i> <span data-i18n="home_download_button">下载</span>
+            </button>
+        </div>
+        
+        <div id="resultArea" class="mt-8 text-center min-h-[100px] flex items-center justify-center">
+            <!-- Loading State -->
+            <div id="loadingState" class="hidden flex flex-col items-center justify-center p-6 bg-blue-100 text-blue-800 rounded-lg shadow-md max-w-sm mx-auto animate-pulse">
+                <i class="fas fa-spinner fa-spin text-6xl mb-4 text-blue-600"></i>
+                <p class="text-xl font-bold" data-i18n="home_loading_message">正在宇宙中解析您的视频，请稍候...</p>
+                <p class="text-sm mt-2 opacity-80" data-i18n="home_loading_message_sub">这可能需要几秒钟，请耐心等待。</p>
+            </div>
+
+            <!-- Success State -->
+            <div id="successState" class="hidden flex flex-col items-center justify-center p-8 bg-green-100 text-green-800 rounded-lg shadow-lg max-w-md mx-auto transform scale-0 animate-scale-in">
+                <i class="fas fa-check-circle text-7xl mb-6 text-green-600 animate-bounce-in"></i>
+                <p class="text-2xl font-extrabold mb-6" data-i18n="home_download_success">视频解析成功！</p>
+                <a id="downloadLink" href="#" target="_blank" class="bg-gradient-to-r from-green-500 to-green-700 hover:from-green-600 hover:to-green-800 text-white font-bold py-4 px-10 rounded-full text-lg shadow-xl transition transform hover:scale-105 flex items-center">
+                    <i class="fas fa-cloud-download-alt mr-3"></i> <span data-i18n="home_download_now">立即下载视频</span>
+                </a>
+            </div>
+
+            <!-- Error State -->
+            <div id="errorState" class="hidden flex flex-col items-center justify-center p-8 bg-red-100 text-red-800 rounded-lg shadow-lg max-w-md mx-auto animate-fade-in">
+                <i class="fas fa-exclamation-triangle text-7xl mb-6 text-red-600 animate-shake"></i>
+                <p id="errorMessage" class="text-xl font-bold mb-4" data-i18n="home_download_error_title">下载失败！</p>
+                <p class="text-base text-red-700 opacity-90" data-i18n="home_download_error_message">请检查视频链接或稍后再试。</p>
+            </div>
+        </div>
+    </div>
+
+    <section class="text-center mb-16">
+        <h3 class="text-4xl font-bold text-gray-800 mb-8" data-i18n="home_platforms_title">我们支持的平台</h3>
+        <div class="flex justify-center space-x-10">
+            <div class="w-20 h-20 flex items-center justify-center platform-icon">
+                <i class="fab fa-x-twitter text-6xl text-gray-700 hover:text-black"></i>
+            </div>
+            <div class="w-20 h-20 flex items-center justify-center platform-icon">
+                <i class="fab fa-youtube text-6xl text-gray-700 hover:text-red-600"></i>
+            </div>
+            <div class="w-20 h-20 flex items-center justify-center platform-icon">
+                <img src="../assets/image/support_platform/TikTok-Logo.svg" alt="TikTok" class="w-full h-full object-contain"/>
+            </div>
+            <div class="w-20 h-20 flex items-center justify-center platform-icon">
+                <i class="fab fa-instagram text-6xl text-gray-700 hover:text-pink-600"></i>
+            </div>
+            <div class="w-20 h-20 flex items-center justify-center platform-icon">
+                <i class="fab fa-facebook-f text-6xl text-gray-700 hover:text-blue-600"></i>
+            </div>
+        </div>
+    </section>
+
+    <section class="text-center mb-16">
+        <h3 class="text-4xl font-bold text-gray-800 mb-8" data-i18n="home_how_to_use_title">如何使用小红视频下载</h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+            <div class="bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-2 border-t-4 border-red-500">
+                <i class="fas fa-copy text-5xl text-red-500 mb-4"></i>
+                <h4 class="text-2xl font-semibold mb-3" data-i18n="home_step_1_title">1. 复制链接</h4>
+                <p class="text-gray-600" data-i18n="home_step_1_desc">找到您想下载的视频，复制其链接。</p>
+            </div>
+            <div class="bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-2 border-t-4 border-red-500">
+                <i class="fas fa-paste text-5xl text-red-500 mb-4"></i>
+                <h4 class="text-2xl font-semibold mb-3" data-i18n="home_step_2_title">2. 粘贴并下载</h4>
+                <p class="text-gray-600" data-i18n="home_step_2_desc">将链接粘贴到上面的输入框，点击下载按钮。</p>
+            </div>
+            <div class="bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-2 border-t-4 border-red-500">
+                <i class="fas fa-check-circle text-5xl text-red-500 mb-4"></i>
+                <h4 class="text-2xl font-semibold mb-3" data-i18n="home_step_3_title">3. 保存到设备</h4>
+                <p class="text-gray-600" data-i18n="home_step_3_desc">选择所需格式和质量，保存视频到您的设备。</p>
+            </div>
+        </div>
+    </section>
+
+    <script type="module">
+        import api from '../js/api.js';
+        
+        document.getElementById('downloadButton').addEventListener('click', async () => {
+            const videoLinkInput = document.getElementById('videoLink');
+            const videoLink = videoLinkInput.value;
+            const resultArea = document.getElementById('resultArea');
+            const loadingState = document.getElementById('loadingState');
+            const successState = document.getElementById('successState');
+            const errorState = document.getElementById('errorState');
+            const errorMessage = document.getElementById('errorMessage');
+            const downloadButton = document.getElementById('downloadButton');
+
+            // Hide all states initially
+            loadingState.classList.add('hidden');
+            successState.classList.add('hidden');
+            errorState.classList.add('hidden');
+
+            if (!videoLink) {
+                errorMessage.textContent = translations[localStorage.getItem('selectedLanguage') || 'zh-CN'].home_invalid_url_message;
+                errorState.classList.remove('hidden');
+                return;
+            }
+
+            // Show loading state
+            loadingState.classList.remove('hidden');
+            downloadButton.disabled = true;
+            downloadButton.innerHTML = `<i class="fas fa-spinner fa-spin mr-2"></i> ${translations[localStorage.getItem('selectedLanguage') || 'zh-CN'].home_loading_message}`;
+
+            try {
+                const data = await api.downloadVideo(videoLink);
+                loadingState.classList.add('hidden');
+
+                if (data.downloadUrl) {
+                    document.getElementById('downloadLink').href = data.downloadUrl;
+                    successState.classList.remove('hidden');
+                } else {
+                    errorMessage.textContent = `${translations[localStorage.getItem('selectedLanguage') || 'zh-CN'].home_download_error} ${data.error || ''}`;
+                    errorState.classList.remove('hidden');
+                }
+            } catch (error) {
+                console.error('下载请求出错:', error);
+                loadingState.classList.add('hidden');
+                errorMessage.textContent = translations[localStorage.getItem('selectedLanguage') || 'zh-CN'].home_network_error_message;
+                errorState.classList.remove('hidden');
+            } finally {
+                downloadButton.disabled = false;
+                downloadButton.innerHTML = `<i class="fas fa-download mr-2"></i> ${translations[localStorage.getItem('selectedLanguage') || 'zh-CN'].home_download_button}`;
+            }
+        });
+    </script>
+    <script src="../js/translations.js"></script>
+    <script src="../js/main.js"></script>
+</body>
+</html> 
