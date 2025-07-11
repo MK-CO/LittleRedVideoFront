@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 250" width="400" height="250">
+  <defs>
+    <linearGradient id="bg6" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ff9a9e;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#fecfef;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="400" height="250" fill="url(#bg6)"/>
+  
+  <!-- File icons -->
+  <g>
+    <!-- MP4 file -->
+    <g transform="translate(80, 80)">
+      <rect x="0" y="0" width="60" height="80" rx="4" fill="white" stroke="#333" stroke-width="2"/>
+      <polygon points="45,0 60,15 45,15" fill="#e9ecef" stroke="#333" stroke-width="1"/>
+      <rect x="5" y="25" width="50" height="3" fill="#6c757d" rx="1"/>
+      <rect x="5" y="32" width="35" height="3" fill="#6c757d" rx="1"/>
+      <rect x="5" y="39" width="40" height="3" fill="#6c757d" rx="1"/>
+      <text x="30" y="65" text-anchor="middle" fill="#dc3545" font-family="Arial, sans-serif" font-size="12" font-weight="bold">MP4</text>
+    </g>
+    
+    <!-- AVI file -->
+    <g transform="translate(170, 80)">
+      <rect x="0" y="0" width="60" height="80" rx="4" fill="white" stroke="#333" stroke-width="2"/>
+      <polygon points="45,0 60,15 45,15" fill="#e9ecef" stroke="#333" stroke-width="1"/>
+      <rect x="5" y="25" width="50" height="3" fill="#6c757d" rx="1"/>
+      <rect x="5" y="32" width="35" height="3" fill="#6c757d" rx="1"/>
+      <rect x="5" y="39" width="40" height="3" fill="#6c757d" rx="1"/>
+      <text x="30" y="65" text-anchor="middle" fill="#28a745" font-family="Arial, sans-serif" font-size="12" font-weight="bold">AVI</text>
+    </g>
+    
+    <!-- MKV file -->
+    <g transform="translate(260, 80)">
+      <rect x="0" y="0" width="60" height="80" rx="4" fill="white" stroke="#333" stroke-width="2"/>
+      <polygon points="45,0 60,15 45,15" fill="#e9ecef" stroke="#333" stroke-width="1"/>
+      <rect x="5" y="25" width="50" height="3" fill="#6c757d" rx="1"/>
+      <rect x="5" y="32" width="35" height="3" fill="#6c757d" rx="1"/>
+      <rect x="5" y="39" width="40" height="3" fill="#6c757d" rx="1"/>
+      <text x="30" y="65" text-anchor="middle" fill="#6f42c1" font-family="Arial, sans-serif" font-size="12" font-weight="bold">MKV</text>
+    </g>
+  </g>
+  
+  <!-- Quality indicators -->
+  <g>
+    <!-- HD badge -->
+    <rect x="60" y="50" width="30" height="15" rx="7" fill="#ffc107"/>
+    <text x="75" y="61" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="10" font-weight="bold">HD</text>
+    
+    <!-- 4K badge -->
+    <rect x="185" y="50" width="30" height="15" rx="7" fill="#dc3545"/>
+    <text x="200" y="61" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="10" font-weight="bold">4K</text>
+    
+    <!-- FHD badge -->
+    <rect x="270" y="50" width="30" height="15" rx="7" fill="#17a2b8"/>
+    <text x="285" y="61" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="9" font-weight="bold">FHD</text>
+  </g>
+  
+  <!-- Comparison arrows -->
+  <g stroke="#333" stroke-width="2" fill="#333">
+    <line x1="140" y1="120" x2="160" y2="120"/>
+    <polygon points="155,115 165,120 155,125" fill="#333"/>
+    
+    <line x1="230" y1="120" x2="250" y2="120"/>
+    <polygon points="245,115 255,120 245,125" fill="#333"/>
+  </g>
+  
+  <!-- Features list -->
+  <g fill="#333" font-family="Arial, sans-serif" font-size="10">
+    <text x="110" y="185">• Universal</text>
+    <text x="110" y="198">• Small size</text>
+    
+    <text x="200" y="185">• High quality</text>
+    <text x="200" y="198">• Large size</text>
+    
+    <text x="290" y="185">• Open source</text>
+    <text x="290" y="198">• Flexible</text>
+  </g>
+  
+  <!-- Title -->
+  <text x="200" y="30" text-anchor="middle" fill="#333" font-family="Arial, sans-serif" font-size="16" font-weight="bold">
+    Video Format Comparison
+  </text>
+  
+  <text x="200" y="235" text-anchor="middle" fill="#333" font-family="Arial, sans-serif" font-size="12">
+    Choose the Right Format for Your Needs
+  </text>
+</svg>

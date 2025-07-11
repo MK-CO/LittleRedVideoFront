@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 250" width="400" height="250">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="chart" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#ff6b6b;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#ee5a24;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="400" height="250" fill="url(#bg)"/>
+  
+  <!-- Chart lines -->
+  <g stroke="white" stroke-width="1" opacity="0.3">
+    <line x1="50" y1="50" x2="350" y2="50"/>
+    <line x1="50" y1="100" x2="350" y2="100"/>
+    <line x1="50" y1="150" x2="350" y2="150"/>
+    <line x1="50" y1="200" x2="350" y2="200"/>
+  </g>
+  
+  <!-- Trend line -->
+  <polyline points="50,180 100,160 150,140 200,110 250,90 300,70 350,50" 
+            fill="none" stroke="url(#chart)" stroke-width="3"/>
+  
+  <!-- Data points -->
+  <g fill="#ff6b6b">
+    <circle cx="50" cy="180" r="4"/>
+    <circle cx="100" cy="160" r="4"/>
+    <circle cx="150" cy="140" r="4"/>
+    <circle cx="200" cy="110" r="4"/>
+    <circle cx="250" cy="90" r="4"/>
+    <circle cx="300" cy="70" r="4"/>
+    <circle cx="350" cy="50" r="4"/>
+  </g>
+  
+  <!-- Download icon -->
+  <g transform="translate(320, 20)">
+    <rect x="0" y="0" width="20" height="15" rx="2" fill="white" opacity="0.9"/>
+    <path d="M5 5 L10 10 L15 5" stroke="#667eea" stroke-width="2" fill="none"/>
+    <line x1="10" y1="2" x2="10" y2="10" stroke="#667eea" stroke-width="2"/>
+  </g>
+  
+  <!-- Title -->
+  <text x="200" y="230" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="16" font-weight="bold">
+    Video Download Trends
+  </text>
+</svg>

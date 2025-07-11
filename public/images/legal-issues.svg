@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 250" width="400" height="250">
+  <defs>
+    <linearGradient id="bg4" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="400" height="250" fill="url(#bg4)"/>
+  
+  <!-- Scale of justice base -->
+  <rect x="190" y="180" width="20" height="40" fill="#ffd700"/>
+  <rect x="170" y="220" width="60" height="8" fill="#ffd700"/>
+  
+  <!-- Scale beam -->
+  <rect x="120" y="175" width="160" height="4" fill="#ffd700"/>
+  
+  <!-- Left scale -->
+  <g>
+    <line x1="140" y1="177" x2="140" y2="195" stroke="#ffd700" stroke-width="2"/>
+    <ellipse cx="140" cy="200" rx="25" ry="8" fill="none" stroke="#ffd700" stroke-width="2"/>
+    <path d="M115 200 Q140 190 165 200" fill="none" stroke="#ffd700" stroke-width="2"/>
+  </g>
+  
+  <!-- Right scale -->
+  <g>
+    <line x1="260" y1="177" x2="260" y2="195" stroke="#ffd700" stroke-width="2"/>
+    <ellipse cx="260" cy="200" rx="25" ry="8" fill="none" stroke="#ffd700" stroke-width="2"/>
+    <path d="M235 200 Q260 190 285 200" fill="none" stroke="#ffd700" stroke-width="2"/>
+  </g>
+  
+  <!-- Legal documents -->
+  <g>
+    <!-- Left document -->
+    <rect x="120" y="190" width="40" height="15" fill="white" rx="2"/>
+    <g stroke="#333" stroke-width="1">
+      <line x1="125" y1="195" x2="155" y2="195"/>
+      <line x1="125" y1="198" x2="150" y2="198"/>
+      <line x1="125" y1="201" x2="145" y2="201"/>
+    </g>
+    
+    <!-- Right document -->
+    <rect x="240" y="190" width="40" height="15" fill="white" rx="2"/>
+    <g stroke="#333" stroke-width="1">
+      <line x1="245" y1="195" x2="275" y2="195"/>
+      <line x1="245" y1="198" x2="270" y2="198"/>
+      <line x1="245" y1="201" x2="265" y2="201"/>
+    </g>
+  </g>
+  
+  <!-- Warning signs -->
+  <g>
+    <!-- Left warning -->
+    <polygon points="80,120 95,95 110,120" fill="#ffc107" stroke="#333" stroke-width="2"/>
+    <text x="95" y="115" text-anchor="middle" fill="#333" font-family="Arial, sans-serif" font-size="16" font-weight="bold">!</text>
+    
+    <!-- Right warning -->
+    <polygon points="290,120 305,95 320,120" fill="#dc3545" stroke="#333" stroke-width="2"/>
+    <text x="305" y="115" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="16" font-weight="bold">!</text>
+  </g>
+  
+  <!-- Copyright symbol -->
+  <g transform="translate(200, 80)" fill="white">
+    <circle cx="0" cy="0" r="20" fill="none" stroke="white" stroke-width="3"/>
+    <text x="0" y="8" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" font-weight="bold">©</text>
+  </g>
+  
+  <!-- Platform icons -->
+  <g fill="white" opacity="0.8">
+    <!-- TikTok -->
+    <circle cx="60" cy="60" r="12"/>
+    <text x="60" y="67" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="bold">TT</text>
+    
+    <!-- Instagram -->
+    <rect x="320" y="48" width="24" height="24" rx="8" fill="none" stroke="white" stroke-width="2"/>
+    <circle cx="332" cy="60" r="6" fill="none" stroke="white" stroke-width="2"/>
+    <circle cx="338" cy="54" r="2" fill="white"/>
+  </g>
+  
+  <!-- Title -->
+  <text x="200" y="30" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="16" font-weight="bold">
+    Legal Issues of Video Downloading
+  </text>
+  
+  <text x="200" y="240" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="12" opacity="0.9">
+    Know Your Rights and Responsibilities
+  </text>
+</svg>

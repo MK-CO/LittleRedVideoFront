@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 250" width="400" height="250">
+  <defs>
+    <linearGradient id="bg5" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#11998e;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#38ef7d;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="400" height="250" fill="url(#bg5)"/>
+  
+  <!-- Shield -->
+  <g transform="translate(200, 125)">
+    <path d="M0,-60 C-30,-60 -50,-40 -50,0 C-50,40 0,80 0,80 C0,80 50,40 50,0 C50,-40 30,-60 0,-60 Z" 
+          fill="white" stroke="#333" stroke-width="3"/>
+    
+    <!-- Lock icon inside shield -->
+    <g transform="translate(0, -10)">
+      <rect x="-12" y="-5" width="24" height="20" rx="3" fill="#11998e"/>
+      <rect x="-8" y="-15" width="16" height="12" rx="8" fill="none" stroke="#11998e" stroke-width="3"/>
+      <circle cx="0" cy="5" r="3" fill="white"/>
+      <rect x="-1" y="5" width="2" height="6" fill="white"/>
+    </g>
+  </g>
+  
+  <!-- Security elements around shield -->
+  <g fill="white" opacity="0.8">
+    <!-- Eye with slash (privacy) -->
+    <g transform="translate(120, 80)">
+      <ellipse cx="0" cy="0" rx="15" ry="8" fill="none" stroke="white" stroke-width="2"/>
+      <circle cx="0" cy="0" r="5" fill="white"/>
+      <line x1="-12" y1="-6" x2="12" y2="6" stroke="white" stroke-width="3"/>
+    </g>
+    
+    <!-- Fingerprint -->
+    <g transform="translate(280, 80)">
+      <g fill="none" stroke="white" stroke-width="2">
+        <ellipse cx="0" cy="0" rx="12" ry="15"/>
+        <ellipse cx="0" cy="0" rx="8" ry="10"/>
+        <ellipse cx="0" cy="0" rx="4" ry="5"/>
+      </g>
+    </g>
+    
+    <!-- WiFi with lock -->
+    <g transform="translate(120, 170)">
+      <g fill="none" stroke="white" stroke-width="2">
+        <path d="M-15,-5 Q0,-15 15,-5"/>
+        <path d="M-10,-2 Q0,-8 10,-2"/>
+        <path d="M-5,1 Q0,-3 5,1"/>
+      </g>
+      <circle cx="0" cy="5" r="2" fill="white"/>
+      <rect x="8" y="-8" width="8" height="6" rx="1" fill="white"/>
+      <rect x="10" y="-10" width="4" height="3" rx="2" fill="none" stroke="white" stroke-width="1"/>
+    </g>
+    
+    <!-- Data encryption -->
+    <g transform="translate(280, 170)">
+      <rect x="-8" y="-6" width="16" height="12" rx="2" fill="none" stroke="white" stroke-width="2"/>
+      <g font-family="monospace" font-size="8" fill="white">
+        <text x="0" y="-2" text-anchor="middle">101</text>
+        <text x="0" y="4" text-anchor="middle">010</text>
+      </g>
+    </g>
+  </g>
+  
+  <!-- Checkmarks -->
+  <g stroke="white" stroke-width="3" fill="none">
+    <path d="M80 120 L85 125 L95 115" opacity="0.8"/>
+    <path d="M305 120 L310 125 L320 115" opacity="0.8"/>
+    <path d="M80 200 L85 205 L95 195" opacity="0.8"/>
+    <path d="M305 200 L310 205 L320 195" opacity="0.8"/>
+  </g>
+  
+  <!-- Title -->
+  <text x="200" y="30" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="16" font-weight="bold">
+    Privacy Protection
+  </text>
+  
+  <text x="200" y="240" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="12" opacity="0.9">
+    Secure Video Downloading
+  </text>
+</svg>
