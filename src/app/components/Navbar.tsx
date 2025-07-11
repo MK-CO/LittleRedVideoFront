@@ -4,11 +4,13 @@ import React from 'react';
 import Link from 'next/link';
 import { useLanguage } from './LanguageProvider';
 
+type Language = 'en' | 'zh-CN';
+
 const Navbar = () => {
   const { currentLanguage, setLanguage, t } = useLanguage();
 
   const handleLanguageChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setLanguage(e.target.value as any);
+    setLanguage(e.target.value as Language);
   };
 
   return (
@@ -44,10 +46,6 @@ const Navbar = () => {
             className="form-select border border-gray-300 rounded-md py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-red-500"
           >
             <option value="en">English</option>
-            <option value="es">Español</option>
-            <option value="fr">Français</option>
-            <option value="de">Deutsch</option>
-            <option value="zh-TW">繁體中文</option>
             <option value="zh-CN">简体中文</option>
           </select>
         </div>

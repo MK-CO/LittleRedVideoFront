@@ -1,10 +1,7 @@
 // API 配置
 const API_CONFIG = {
-  // 开发环境使用本地地址，生产环境使用服务器地址
-  BASE_URL: typeof window !== 'undefined' && 
-    (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
-    ? 'http://127.0.0.1:5001/'
-    : 'http://172.245.62.112/lrv/'
+  // 使用相对路径，通过Next.js代理转发到后端服务器，避免CORS问题
+  BASE_URL: '/'
 };
 
 // API 请求工具

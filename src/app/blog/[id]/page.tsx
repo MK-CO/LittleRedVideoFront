@@ -5,12 +5,17 @@ import Link from 'next/link';
 import { useLanguage } from '../../components/LanguageProvider';
 
 interface BlogDetailProps {
-  params: {
+  params: Promise<{
     id: string;
-  };
+  }>;
 }
 
 export default function BlogDetail({ params }: BlogDetailProps) {
+  const [resolvedParams, setResolvedParams] = useState<{ id: string } | null>(null);
+
+  useEffect(() => {
+    params.then(setResolvedParams);
+  }, [params]);
   const { t } = useLanguage();
   const [tocItems, setTocItems] = useState<Array<{ id: string; text: string; level: number }>>([]);
   const [activeSection, setActiveSection] = useState('');
@@ -54,14 +59,20 @@ export default function BlogDetail({ params }: BlogDetailProps) {
   };
 
   const getBlogContent = () => {
-    const contentKey = `blog_post_${params.id}_content`;
+    if (!resolvedParams) return '';
+    const contentKey = `blog_post_${resolvedParams.id}_content`;
     return t(contentKey);
   };
 
   const getBlogTitle = () => {
-    const titleKey = `blog_post_${params.id}_title`;
+    if (!resolvedParams) return '';
+    const titleKey = `blog_post_${resolvedParams.id}_title`;
     return t(titleKey);
   };
+
+  if (!resolvedParams) {
+    return <div className="container mx-auto px-6 py-8">Loading...</div>;
+  }
 
   return (
     <div className="container mx-auto px-6 py-8">

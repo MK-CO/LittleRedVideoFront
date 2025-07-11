@@ -18,6 +18,7 @@ export default function RootLayout({
       <head>
         <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+        <script defer data-domain="xvideodl.charitydoing.com" src="https://vince.charitydoing.com/js/script.js"></script>
       </head>
       <body className="font-sans" style={{backgroundColor: '#f0f2f5'}}>
         <LanguageProvider>

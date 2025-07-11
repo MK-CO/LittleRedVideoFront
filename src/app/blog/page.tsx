@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useLanguage } from '../components/LanguageProvider';
 
 export default function Blog() {
@@ -55,9 +56,11 @@ export default function Blog() {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {blogPosts.map((post) => (
           <div key={post.id} className="blog-card bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300">
-            <img 
+            <Image 
               src={post.image} 
               alt={t(post.titleKey)}
+              width={400}
+              height={192}
               className="w-full h-48 object-cover"
             />
             <div className="p-6">
