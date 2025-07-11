@@ -125,9 +125,6 @@ export default function Home() {
             <i className="fab fa-x-twitter text-4xl md:text-6xl text-gray-700 hover:text-black"></i>
           </div>
           <div className="w-16 h-16 md:w-20 md:h-20 flex items-center justify-center platform-icon">
-            <i className="fab fa-youtube text-4xl md:text-6xl text-gray-700 hover:text-red-600"></i>
-          </div>
-          <div className="w-16 h-16 md:w-20 md:h-20 flex items-center justify-center platform-icon">
             <i className="fab fa-tiktok text-4xl md:text-6xl text-gray-700 hover:text-black"></i>
           </div>
           <div className="w-16 h-16 md:w-20 md:h-20 flex items-center justify-center platform-icon">

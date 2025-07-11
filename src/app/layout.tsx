@@ -5,7 +5,7 @@ import Navbar from './components/Navbar';
 
 export const metadata: Metadata = {
   title: "小红视频下载 - 首页",
-  description: "轻松下载您喜爱的视频！支持X、YouTube、TikTok、Instagram、Facebook等平台",
+  description: "轻松下载您喜爱的视频！支持X、TikTok、Instagram、Facebook等平台",
 };
 
 export default function RootLayout({
